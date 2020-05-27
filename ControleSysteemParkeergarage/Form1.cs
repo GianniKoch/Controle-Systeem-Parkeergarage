@@ -5,21 +5,26 @@ using System.Net.Http;
 using ControleSysteemParkeergarage.Models;
 using System.Collections.Generic;
 using System.Threading;
-using MySql.Data.MySqlClient;
 
 namespace ControleSysteemParkeergarage
 {
     public partial class frmControle : Form
     {
         private string getRequest = "";
+        private Business _business;
 
         public frmControle()
         {
             InitializeComponent();
+            
         }
 
         private void frmControle_Load(object sender, EventArgs e)
         {
+            _business = new Business()
+            {
+                MySqlSettings = new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text }
+            };
             Thread th = getConnectionThread();
             th.Start();
             startEventTimerThread();
@@ -85,6 +90,7 @@ namespace ControleSysteemParkeergarage
                         get = "";
                         string strResult = await response.Content.ReadAsStringAsync();
                             handleResult(strResult);
+                        var a = _business.log(Persistance.logType.ConnectionSucces, "test", DateTime.Now);
                     }
                     catch (Exception) { }
                 }
@@ -123,6 +129,14 @@ namespace ControleSysteemParkeergarage
                     BeginInvoke((MethodInvoker)(() => ctr.BackColor = parkeerplaats.H ? System.Drawing.Color.FromArgb(128, 128, 255) : DefaultBackColor));
                 }
             }
+        }
+
+        private void btnHerlaadConnectieGegevens_Click(object sender, EventArgs e)
+        {
+            _business = new Business()
+            {
+                MySqlSettings = new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text }
+            };
         }
     }
 }
