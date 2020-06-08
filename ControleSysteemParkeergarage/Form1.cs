@@ -21,10 +21,7 @@ namespace ControleSysteemParkeergarage
 
         private void frmControle_Load(object sender, EventArgs e)
         {
-            _business = new Business()
-            {
-                MySqlSettings = new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text }
-            };
+            _business = new Business(new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text});
             Thread th = getConnectionThread();
             th.Start();
             startEventTimerThread();
@@ -73,7 +70,6 @@ namespace ControleSysteemParkeergarage
                 while (true)
                 {
                     Thread.Sleep(200);
-
                     HttpClient client = new HttpClient();
                     try
                     {
@@ -89,8 +85,7 @@ namespace ControleSysteemParkeergarage
                         getRequest = "";
                         get = "";
                         string strResult = await response.Content.ReadAsStringAsync();
-                            handleResult(strResult);
-                        var a = _business.log(Persistance.logType.ConnectionSucces, "test", DateTime.Now);
+                        handleResult(strResult);
                     }
                     catch (Exception) { }
                 }
@@ -133,10 +128,7 @@ namespace ControleSysteemParkeergarage
 
         private void btnHerlaadConnectieGegevens_Click(object sender, EventArgs e)
         {
-            _business = new Business()
-            {
-                MySqlSettings = new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text }
-            };
+            _business = new Business(new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text });
         }
     }
 }

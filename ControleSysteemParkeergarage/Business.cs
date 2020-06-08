@@ -5,24 +5,16 @@ namespace ControleSysteemParkeergarage
 {
     class Business
     {
-        public string[] MySqlSettings { get; set; }
 
         private Persistance _persistance;
 
-        public Business() {
-            _persistance = new Persistance()
-            {
-                localhost = MySqlSettings[0],
-                user = MySqlSettings[1],
-                password = MySqlSettings[2],
-                database = MySqlSettings[3]
-            };
+        public Business(string[] MySqlSettings) {
+            _persistance = new Persistance(MySqlSettings[0], MySqlSettings[1],MySqlSettings[2], MySqlSettings[3]);
         }
 
         public bool log(Persistance.logType type, string value, DateTime dt)
         {
-            _persistance.log(type, value, dt);
-            return false;
+            return _persistance.log(type, value, dt);
         }
     }
 }
