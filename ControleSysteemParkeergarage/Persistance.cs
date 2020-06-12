@@ -9,10 +9,14 @@ namespace ControleSysteemParkeergarage
         private MySqlConnection _connection;
         private MySqlCommand _command;
         private Dictionary<logType, int> _dbTypeIds;
+        public bool ConnectionSuccess { get; }
 
         public Persistance(string localhost, string user, string password, string database)
         {
             _connection = new MySqlConnection($@"server={localhost};user id={user};password={password};database={database}");
+            _connection.Open();
+            ConnectionSuccess = _connection.State.ToString() == "Open";
+            _connection.Close();
             _dbTypeIds = getTypeIdsFromDb();
         }
 
@@ -71,7 +75,7 @@ namespace ControleSysteemParkeergarage
             AutoUitgaand,
             ParkeerplaatsBezet,
             ParkeerplaatsVrij,
-            ParkeerpgarageVol,
+            ParkeergarageVol,
             ParkeergarageLeeg,
             ConnectionSucces
         }
