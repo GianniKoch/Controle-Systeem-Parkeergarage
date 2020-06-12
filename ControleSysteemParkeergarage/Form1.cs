@@ -12,6 +12,7 @@ namespace ControleSysteemParkeergarage
     {
         private string getRequest = "";
         private Business _business;
+        private JSONBericht _vorigBericht;
 
         public frmControle()
         {
@@ -25,6 +26,7 @@ namespace ControleSysteemParkeergarage
             Thread th = getConnectionThread();
             th.Start();
             startEventTimerThread();
+            MessageBox.Show(_business.ConnectionOpen.ToString());
         }
 
         private void startEventTimerThread()
@@ -99,7 +101,11 @@ namespace ControleSysteemParkeergarage
             {
                 berichten = getjsonData<List<JSONBericht>>(strResult);
                 foreach(JSONBericht bericht in berichten)
+                {
                     UpdateParkeerplaatsen(bericht);
+                    CheckLogging(bericht);
+                    _vorigBericht = bericht;
+                }
             }
             catch (Exception) { }
 
@@ -129,6 +135,23 @@ namespace ControleSysteemParkeergarage
         private void btnHerlaadConnectieGegevens_Click(object sender, EventArgs e)
         {
             _business = new Business(new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text });
+        }
+
+        private void CheckLogging(JSONBericht huidigBericht)
+        {
+            if (huidigBericht.AantalAutosInParkeerplaats > _vorigBericht.AantalAutosInParkeerplaats)
+                _business.log(Persistance.logType.AutoIngaand, "Ingaande auto. Totaal: " + huidigBericht.AantalAutosInParkeerplaats, DateTime.Now);
+            if (huidigBericht.AantalAutosInParkeerplaats < _vorigBericht.AantalAutosInParkeerplaats)
+                _business.log(Persistance.logType.AutoUitgaand, "Uitgaande auto. Totaal: " + huidigBericht.AantalAutosInParkeerplaats, DateTime.Now);
+            if (huidigBericht.AantalAutosInParkeerplaats >= 24)
+                _business.log(Persistance.logType.ParkeergarageVol, "Parkeergarage is vol.", DateTime.Now); 
+            if (huidigBericht.AantalAutosInParkeerplaats <= 0)
+                _business.log(Persistance.logType.ParkeergarageVol, "Parkeergarage is leeg.", DateTime.Now);
+            foreach (var plaats in huidigBericht.ParkeerPlaatsen)
+            {
+                if (!plaats.B.Equals(Parkeerplaatsen.getParkeerplaatsFromId(_vorigBericht.ParkeerPlaatsen, plaats.id).B))
+                    _business.log(plaats.B ? Persistance.logType.ParkeerplaatsBezet : Persistance.logType.ParkeerplaatsVrij, $"Parkeerplaats {plaats.id} is " + (plaats.B ? "bezet." : "vrij."), DateTime.Now);
+            }
         }
     }
 }

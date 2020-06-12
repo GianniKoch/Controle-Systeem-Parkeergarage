@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ControleSysteemParkeergarage.Models
 {
@@ -14,6 +15,18 @@ namespace ControleSysteemParkeergarage.Models
             this.id = id;
             B = b;
             H = h;
+        }
+        
+        public static Parkeerplaatsen getParkeerplaatsFromId(List<Parkeerplaatsen> parkeerplaatsen, int id)
+        {
+            foreach (var plaats in parkeerplaatsen)
+            {
+                if (id.Equals(plaats.id))
+                {
+                    return plaats;
+                }
+            }
+            return null;
         }
     }
 }

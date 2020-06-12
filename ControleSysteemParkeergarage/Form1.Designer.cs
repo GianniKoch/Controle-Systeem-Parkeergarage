@@ -154,6 +154,8 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtVooruitgang = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.lblAanwezig = new System.Windows.Forms.Label();
             this.tc.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Parkeerplaats4)).BeginInit();
@@ -209,10 +211,10 @@
             this.tc.Controls.Add(this.tabPage5);
             this.tc.Controls.Add(this.tabPage6);
             this.tc.Controls.Add(this.tabPage7);
-            this.tc.Location = new System.Drawing.Point(2, 12);
+            this.tc.Location = new System.Drawing.Point(2, 30);
             this.tc.Name = "tc";
             this.tc.SelectedIndex = 0;
-            this.tc.Size = new System.Drawing.Size(1147, 563);
+            this.tc.Size = new System.Drawing.Size(1147, 545);
             this.tc.TabIndex = 1;
             // 
             // tabPage1
@@ -1518,13 +1520,14 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.label43);
             this.tabPage7.Controls.Add(this.groupBox1);
             this.tabPage7.Controls.Add(this.label6);
             this.tabPage7.Controls.Add(this.txtVooruitgang);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage7.Size = new System.Drawing.Size(1139, 516);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Logging";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1639,14 +1642,33 @@
             this.txtVooruitgang.Multiline = true;
             this.txtVooruitgang.Name = "txtVooruitgang";
             this.txtVooruitgang.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtVooruitgang.Size = new System.Drawing.Size(734, 486);
+            this.txtVooruitgang.Size = new System.Drawing.Size(734, 474);
             this.txtVooruitgang.TabIndex = 0;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(0, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(54, 17);
+            this.label43.TabIndex = 12;
+            this.label43.Text = "label43";
+            // 
+            // lblAanwezig
+            // 
+            this.lblAanwezig.AutoSize = true;
+            this.lblAanwezig.Location = new System.Drawing.Point(9, 7);
+            this.lblAanwezig.Name = "lblAanwezig";
+            this.lblAanwezig.Size = new System.Drawing.Size(55, 17);
+            this.lblAanwezig.TabIndex = 2;
+            this.lblAanwezig.Text = "Auto\'s: ";
             // 
             // frmControle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 577);
+            this.Controls.Add(this.lblAanwezig);
             this.Controls.Add(this.tc);
             this.Name = "frmControle";
             this.Text = "Controle Systeem Parkeergarage";
@@ -1704,6 +1726,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1834,6 +1857,8 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label lblAanwezig;
     }
 }
 
