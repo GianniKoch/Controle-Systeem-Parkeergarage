@@ -23,10 +23,10 @@ namespace ControleSysteemParkeergarage
         private void frmControle_Load(object sender, EventArgs e)
         {
             _business = new Business(new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text});
+            label43.Text = _business.ConnectionOpen ? "Verbonden" : "Niet verbonden";
             Thread th = getConnectionThread();
             th.Start();
             startEventTimerThread();
-            MessageBox.Show(_business.ConnectionOpen.ToString());
         }
 
         private void startEventTimerThread()
@@ -81,7 +81,7 @@ namespace ControleSysteemParkeergarage
                         {
                             get = "(" + tempReq.Remove(tempReq.Length - 1) + ")";
                         }
-                        String strUrl = "http://192.168.0.177/" + get;
+                        String strUrl = $"http://{txtIP.Text}/" + get;
                         BeginInvoke((MethodInvoker)(() => textBox2.Text = strUrl));
                         HttpResponseMessage response = await client.GetAsync(strUrl);
                         getRequest = "";
@@ -135,6 +135,7 @@ namespace ControleSysteemParkeergarage
         private void btnHerlaadConnectieGegevens_Click(object sender, EventArgs e)
         {
             _business = new Business(new string[] { txtServer.Text, txtUser.Text, txtPassword.Text, txtDatabase.Text });
+            label43.Text = _business.ConnectionOpen ? "Verbonden" : "Niet verbonden";
         }
 
         private void CheckLogging(JSONBericht huidigBericht)

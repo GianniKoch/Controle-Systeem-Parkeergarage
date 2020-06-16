@@ -10,7 +10,7 @@ namespace ControleSysteemParkeergarage
         public Business(string[] MySqlSettings) {
             _persistance = new Persistance(MySqlSettings[0], MySqlSettings[1], MySqlSettings[2], MySqlSettings[3]);
             if(_persistance.ConnectionSuccess) 
-                log(Persistance.logType.ConnectionSucces, $"Connectie gelukt!", DateTime.Now);
+                log(Persistance.logType.ConnectionSucces, "Connectie gelukt!", DateTime.Now);
             ConnectionOpen = _persistance.ConnectionSuccess;
         }
 
