@@ -142,6 +142,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label43 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnHerlaadConnectieGegevens = new System.Windows.Forms.Button();
             this.txtServer = new System.Windows.Forms.TextBox();
@@ -154,8 +155,9 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtVooruitgang = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
             this.lblAanwezig = new System.Windows.Forms.Label();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.tc.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Parkeerplaats4)).BeginInit();
@@ -242,7 +244,7 @@
             this.tabPage1.Controls.Add(this.pictureBox7);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage1.Size = new System.Drawing.Size(1139, 516);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "0";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -469,7 +471,7 @@
             this.pictureBox7.Image = global::ControleSysteemParkeergarage.Properties.Resources.PlattegrondProg00;
             this.pictureBox7.Location = new System.Drawing.Point(0, 0);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1139, 534);
+            this.pictureBox7.Size = new System.Drawing.Size(1139, 516);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 6;
             this.pictureBox7.TabStop = false;
@@ -499,7 +501,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage2.Size = new System.Drawing.Size(1139, 516);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "1";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -718,7 +720,7 @@
             this.pictureBox14.Image = global::ControleSysteemParkeergarage.Properties.Resources.PlattegrondProg1;
             this.pictureBox14.Location = new System.Drawing.Point(3, 3);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(1133, 528);
+            this.pictureBox14.Size = new System.Drawing.Size(1133, 510);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox14.TabIndex = 13;
             this.pictureBox14.TabStop = false;
@@ -748,7 +750,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage3.Size = new System.Drawing.Size(1139, 516);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "2";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -967,7 +969,7 @@
             this.pictureBox21.Image = global::ControleSysteemParkeergarage.Properties.Resources.PlattegrondProg1;
             this.pictureBox21.Location = new System.Drawing.Point(3, 3);
             this.pictureBox21.Name = "pictureBox21";
-            this.pictureBox21.Size = new System.Drawing.Size(1133, 528);
+            this.pictureBox21.Size = new System.Drawing.Size(1133, 510);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox21.TabIndex = 20;
             this.pictureBox21.TabStop = false;
@@ -997,7 +999,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage4.Size = new System.Drawing.Size(1139, 516);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "3";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1216,7 +1218,7 @@
             this.pictureBox28.Image = global::ControleSysteemParkeergarage.Properties.Resources.PlattegrondProg1;
             this.pictureBox28.Location = new System.Drawing.Point(3, 3);
             this.pictureBox28.Name = "pictureBox28";
-            this.pictureBox28.Size = new System.Drawing.Size(1133, 528);
+            this.pictureBox28.Size = new System.Drawing.Size(1133, 510);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox28.TabIndex = 20;
             this.pictureBox28.TabStop = false;
@@ -1246,7 +1248,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage5.Size = new System.Drawing.Size(1139, 516);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "4";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1465,13 +1467,15 @@
             this.pictureBox35.Image = global::ControleSysteemParkeergarage.Properties.Resources.PlattegrondProg1;
             this.pictureBox35.Location = new System.Drawing.Point(3, 3);
             this.pictureBox35.Name = "pictureBox35";
-            this.pictureBox35.Size = new System.Drawing.Size(1133, 528);
+            this.pictureBox35.Size = new System.Drawing.Size(1133, 510);
             this.pictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox35.TabIndex = 20;
             this.pictureBox35.TabStop = false;
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label45);
+            this.tabPage6.Controls.Add(this.txtIP);
             this.tabPage6.Controls.Add(this.label39);
             this.tabPage6.Controls.Add(this.label38);
             this.tabPage6.Controls.Add(this.textBox2);
@@ -1479,7 +1483,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1139, 534);
+            this.tabPage6.Size = new System.Drawing.Size(1139, 516);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Connecties";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1531,6 +1535,16 @@
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Logging";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(1026, 12);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(107, 17);
+            this.label43.TabIndex = 12;
+            this.label43.Text = "Niet Verbonden";
+            this.label43.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBox1
             // 
@@ -1645,15 +1659,6 @@
             this.txtVooruitgang.Size = new System.Drawing.Size(734, 474);
             this.txtVooruitgang.TabIndex = 0;
             // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(0, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(54, 17);
-            this.label43.TabIndex = 12;
-            this.label43.Text = "label43";
-            // 
             // lblAanwezig
             // 
             this.lblAanwezig.AutoSize = true;
@@ -1662,6 +1667,23 @@
             this.lblAanwezig.Size = new System.Drawing.Size(55, 17);
             this.lblAanwezig.TabIndex = 2;
             this.lblAanwezig.Text = "Auto\'s: ";
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(102, 32);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(128, 22);
+            this.txtIP.TabIndex = 5;
+            this.txtIP.Text = "192.168.10.177";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(68, 35);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(28, 17);
+            this.label45.TabIndex = 7;
+            this.label45.Text = "IP :";
             // 
             // frmControle
             // 
@@ -1859,6 +1881,8 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label lblAanwezig;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox txtIP;
     }
 }
 

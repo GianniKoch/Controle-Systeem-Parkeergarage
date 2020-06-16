@@ -13,10 +13,18 @@ namespace ControleSysteemParkeergarage
 
         public Persistance(string localhost, string user, string password, string database)
         {
-            _connection = new MySqlConnection($@"server={localhost};user id={user};password={password};database={database}");
-            _connection.Open();
-            ConnectionSuccess = _connection.State.ToString() == "Open";
-            _connection.Close();
+            try
+            {
+                _connection = new MySqlConnection($@"server={localhost};user id={user};password={password};database={database}");
+                _connection.Open();
+                ConnectionSuccess = _connection.State.ToString() == "Open";
+                _connection.Close();
+            }
+            catch (Exception)
+            {
+                ConnectionSuccess = false;
+                _connection.Close();
+            }
             _dbTypeIds = getTypeIdsFromDb();
         }
 
@@ -38,7 +46,11 @@ namespace ControleSysteemParkeergarage
                 _connection.Close();
                 return dbTypeIds;
             }
-            catch (Exception) { return new Dictionary<logType, int>(); }
+            catch (Exception)
+            {
+                _connection.Close();
+                return new Dictionary<logType, int>(); 
+            }
         }
 
         public int getIdFromLogType(logType type)
@@ -52,7 +64,7 @@ namespace ControleSysteemParkeergarage
         }
 
         public bool log(logType type, string val, DateTime time)
-        { 
+        {
             try
             {
                 var succes = 0;
@@ -66,7 +78,11 @@ namespace ControleSysteemParkeergarage
                     return true;
                 return false;
             }
-            catch (Exception) { return false; }
+            catch (Exception)
+            {
+                _connection.Close();
+                return false;
+            }
         }
 
         public enum logType
