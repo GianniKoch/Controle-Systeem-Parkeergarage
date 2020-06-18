@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 namespace ControleSysteemParkeergarage.Models
 {
+
+    //Model voor het inkomende JSON Bericht (key: parkeerplaats)
     class Parkeerplaatsen
     {
+
+        //Properties in het JSON bericht onder de key parkeerplaats.
         public int id { get; set; }
         public bool B { get; set; }
         public bool H { get; set; }

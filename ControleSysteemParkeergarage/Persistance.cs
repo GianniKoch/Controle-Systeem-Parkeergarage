@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using System.Collections.Generic; //Dictionary<,> / List<>
+using MySql.Data.MySqlClient; //MySqlConnection / command
 
 namespace ControleSysteemParkeergarage
 {
     class Persistance
     {
+        //Globale variabelen
         private MySqlConnection _connection;
         private MySqlCommand _command;
         private Dictionary<logType, int> _dbTypeIds;
@@ -15,8 +16,11 @@ namespace ControleSysteemParkeergarage
         {
             try
             {
+                //Connectie maken.
                 _connection = new MySqlConnection($@"server={localhost};user id={user};password={password};database={database}");
                 _connection.Open();
+                
+                //Propertie instellen op de connectie state.
                 ConnectionSuccess = _connection.State.ToString() == "Open";
                 _connection.Close();
             }
@@ -32,14 +36,18 @@ namespace ControleSysteemParkeergarage
         {
             try
             {
+                //Connectie opstellen.
                 _connection.Open();
                 _command = _connection.CreateCommand();
                 var query = $"SELECT * FROM controleparkeergaragelogging.logtypes;";
                 _command.CommandText = query;
+
+                //Connectie uitvoeren en opslagen in een reader.
                 var reader = _command.ExecuteReader();
                 var dbTypeIds = new Dictionary<logType, int>();
                 while (reader.Read())
                 {
+                    //Alle types toevoegen aan de dictionary.
                     dbTypeIds.Add((logType)Enum.Parse(typeof(logType), reader["typename"].ToString()),
                         int.Parse(reader["idlogtypes"].ToString()));
                 }
@@ -55,25 +63,29 @@ namespace ControleSysteemParkeergarage
 
         public int getIdFromLogType(logType type)
         {
+            //Id terug sturen waarvan de enum overeenkomt in de dictionary.
             int id;
             if (_dbTypeIds.TryGetValue(type, out id))
             {
                 return id;
             }
-            return 0;
+            return -1;
         }
 
         public bool log(logType type, string val, DateTime time)
         {
             try
             {
+                //Query opstellen.
                 var succes = 0;
                 _connection.Open();
                 _command = _connection.CreateCommand();
                 var query = $"insert into logs (logtype, value, time) values ('{getIdFromLogType(type)}','{val}','{time.ToString("yyyy-MM-dd HH:mm:ss")}')";
                 _command.CommandText = query;
+                //Connectie uitvoeren.
                 succes = _command.ExecuteNonQuery();
                 _connection.Close();
+                //Terug sturen of het is gelukt of niet.
                 if (succes > 0)
                     return true;
                 return false;
@@ -87,6 +99,7 @@ namespace ControleSysteemParkeergarage
 
         public enum logType
         {
+            //Enum waarden om de string te vermijden.
             AutoIngaand,
             AutoUitgaand,
             ParkeerplaatsBezet,
